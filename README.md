@@ -101,3 +101,25 @@ DATABASE_URL="mysql://root:@localhost:3306/blog"
 - buat File di folder /components/[PostTable.tsx](./components/PostTable.tsx)
 
 - Edit file /app/[page.tsx](./app/page.tsx)
+
+### Deploy ke vercel
+
+- buat repository di github
+
+- edit file package.json
+
+```json
+"scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "postinstall": "prisma generate",
+    "lint": "next lint"
+  },
+```
+
+- isi Environment Variable di vercel
+
+```bash
+DATABASE_URL="mysql://root:@localhost:3306/blog"
+```
