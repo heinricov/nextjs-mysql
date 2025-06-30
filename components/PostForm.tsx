@@ -31,11 +31,14 @@ export default function PostForm({
     setLoading(true);
 
     try {
-      const response = await fetch("/api/posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, content }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/posts` || "/api/posts",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, content }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create post");

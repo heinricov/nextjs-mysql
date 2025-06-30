@@ -39,7 +39,9 @@ export default function PostTable({
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/posts");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_HOST}/api/posts` || "/api/posts"
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
